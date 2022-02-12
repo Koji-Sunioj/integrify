@@ -1,15 +1,13 @@
 import React, { useState, useEffect }  from 'react';
 import images from './images'
 import Button from './button';
-
 import { Link } from 'react-router-dom';
 
-//https://medium.com/@nutanbhogendrasharma/step-by-step-consume-rest-api-in-react-application-48388f6c4d9c
 const Home = () => {
     let image = 'error.png'
     const [isLoaded, setIsLoaded] = useState(false);
     const [users, setUsers] = useState([]);
-   
+    
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/users/")
         .then(res => res.json())
@@ -22,13 +20,11 @@ const Home = () => {
                     <h1> Loading Users One Sec</h1>
                 </div>);
     } 
-    
+
     else 
     {
-        return(
-                <div className="container"> 
+        return(<div className="container"> 
                     <div className="row">
-                
                         {users.map(user => (
                             <div key={user.id} className="col-12 col-lg-4 info-card" >
                                 <div className="card">

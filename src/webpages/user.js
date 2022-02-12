@@ -48,8 +48,9 @@ else if (user.length == 0)
 else
 {
     return(
+        <div className="container"> 
         <div className="row">
-            <div className="col-md-4 user-photo">
+            <div className="col-4 user-photo">
                 {images.forEach(function(value) {
                     if (user.email  == undefined)
                     {
@@ -66,7 +67,7 @@ else
                 })}
                 <img  src={require('../assets/'+image)}   className="card-img-top" className="card-focus"></img>
             </div>
-            <div className="card col-md-8 border-0">
+            <div className="card col-8 border-0">
                 <div className="card-body">
                     <h1>{user.name}</h1>
                     <h4 className="card-text">username: @{user.username}</h4>
@@ -84,6 +85,7 @@ else
                 </div>
             </div>
             
+        </div>
         </div>
     );
 }

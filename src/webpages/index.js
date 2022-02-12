@@ -8,10 +8,12 @@ import {
 } from "react-router-dom";
 import Home from './home';
 import User from './user';
+import Navbar from './navbar';
 
 const Webpages = () => {
     return(
         <BrowserRouter>
+        <Navbar/>
             <Routes>
                 <Route path="/" element={<Home/>} />
                 <Route path = "/user/:id" element={<User/>}  />
@@ -19,4 +21,6 @@ const Webpages = () => {
         </BrowserRouter>
     );
 };
+
+
 export default Webpages;

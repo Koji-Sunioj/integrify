@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import images from './images'
 import Button from './button';
+
 import { Link } from 'react-router-dom';
 
 //https://medium.com/@nutanbhogendrasharma/step-by-step-consume-rest-api-in-react-application-48388f6c4d9c
@@ -25,6 +26,7 @@ const Home = () => {
     else 
     {
         return(<div className="row">
+            
                     {users.map(user => (
                         <div key={user.id} className="col-12 col-lg-4 info-card" >
                             <div className="card">

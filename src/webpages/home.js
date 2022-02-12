@@ -3,17 +3,48 @@ import images from './images'
 import Button from './button';
 import { Link } from 'react-router-dom';
 
+/*
+this function grabs all the data from the RESP API and displays
+it onto the page from mapping each iterable to bootstrap cards
+the buttons are seperate components imported, with the id set as the 
+URL parameter. it is chained with other methods to display loading, or error state
+*/
+
 const Home = () => {
     let image = 'error.png'
+    const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [users, setUsers] = useState([]);
     
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/users/")
-        .then(res => res.json())
-        .then((data) => {setIsLoaded(true);setUsers(data);})
+            .then(res => {
+                if (!res.ok) 
+                { 
+                    throw Error('could not fetch the data for that resource');
+                } 
+                else 
+                {
+                    return res.json();
+                }
+            })
+            .then(
+                (data) => {
+                    setIsLoaded(true);
+                    setUsers(data);
+                },(error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
         }, [])
 
+    //if no data is returned, this will center on screen 
+    if (error) {
+        return  <div className="loading-header"><h1>This user doesn't exist :(</h1></div>;
+    }
+    
+    //this will display while loading
     if (!isLoaded) 
     {
         return(<div className="loading-header">
@@ -21,6 +52,12 @@ const Home = () => {
                 </div>);
     } 
 
+    /*
+    sends one container and n number of bootstrap cards in the array
+    each iterable takes in one jsx button, whose link points to a URL path
+    the image rendered depends on the top level domain of the email address 
+    */
+   
     else 
     {
         return(<div className="container"> 
@@ -44,9 +81,10 @@ const Home = () => {
                                     </div>
                                 </div>
                             </div>
-                            ))}
+                        ))}
                     </div>
                 </div>);
     }
 }
+
 export default Home;

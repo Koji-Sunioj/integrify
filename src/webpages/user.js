@@ -2,10 +2,18 @@ import React, { useState, useEffect}  from 'react';
 import {useParams} from "react-router-dom";
 import images from './images';
 
+/* 
+This function takes in the id which is the parameter determined from the URL
+it is then parsed together with the REST API, the chained with several methods
+to determine it's state such as loaded, error, or the user object which is 
+eventually loaded into the JSX component
+*/ 
+
+
 const User = () => {
 
     let {id} = useParams()  
-    let image = 'error.png'
+    let image = 'error.png' //default white image loads until stored image fully loaded
 
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -13,7 +21,7 @@ const User = () => {
     const [userAddress, setUserAddress] = useState([]);
     const [userCompany, setUserCompany] = useState([]);
 
-
+    //main function for fetching the data
     useEffect(() => {
          fetch("https://jsonplaceholder.typicode.com/users/" + id)
             .then(res => {
@@ -39,14 +47,15 @@ const User = () => {
                     setError(error);
                 }
             )
-    }, [])
+        }, [])
    
 
-
+    //if an error is thrown during the fetch process, this will render
     if (error) {
-        return  <div>Error: {error.message}</div>;
+        return  <div className="loading-header"><h1>This user doesn't exist :(</h1></div>;
     }
 
+    //this will render until the fetch method is completed
     if (!isLoaded) 
     {
         return( <div className="loading-header">
@@ -54,7 +63,7 @@ const User = () => {
                 </div>);
     } 
 
-    
+    //if the user object exists, state is loaded and no error from fetch, this will appear
     else 
     {
         return(
@@ -94,12 +103,12 @@ const User = () => {
                             </ul>  
                         </div>
                     </div>
-                    
                 </div>
             </div>
         );
     }
 }
+
 export default User;
 
 

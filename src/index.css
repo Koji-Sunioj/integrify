@@ -1,0 +1,40 @@
+
+/*
+plain css styling for the webpage components
+*/
+
+.info-card {
+    padding-bottom: 20px;
+  }
+  
+  .loading-header
+  {
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .link-button
+  {
+    width: 100%;
+  }
+  
+  .username
+  {
+    margin-bottom: 3px;
+  }
+  
+  .user-photo{
+    background-color: white;
+  }
+  
+  .card-focus{
+    height: 100%;
+    width: 100%;
+    
+  }
+  
+  .home-nav{
+    background-color:aqua;
+  }

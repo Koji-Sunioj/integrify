@@ -1,3 +1,7 @@
+# From the developer:
+
+This simple app consists of two primary components: the homepage which is a collection of data from a REST API to bootstrap cards, and a URL with the user id as parameter, that drills down their information. Please note that a file called _redirects was placed in the public folder to handle page reload errors in Netlify, which doesn't happen on the local machine. Thank you! - Koji
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

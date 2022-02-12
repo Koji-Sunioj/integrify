@@ -1,5 +1,7 @@
 import React from 'react';
-import {BrowserRouter, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
+
+//this is a simple component which renders as a navbar, pointing to the home page on all webpages
 
 const Navbar = () => {
   

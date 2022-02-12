@@ -1,6 +1,6 @@
 import React from 'react';
 
-    
+//simple component for button to be used on the bootstrap cards on the homepage
 
 const Button = () => {
   

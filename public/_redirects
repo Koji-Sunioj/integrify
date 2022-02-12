@@ -1,16 +1,2 @@
 
-# Redirect with a 301
-/*         /                       301
-
-# Redirect with a 302
-/*         /                            302
-
-# Rewrite a path
-/*         /                    200
-
-# Invisbily proxy to a third party API
-/*         /        200
-
-# Show a custom 404 for a path
-/*         /          404
-
+/* /index.html 200
